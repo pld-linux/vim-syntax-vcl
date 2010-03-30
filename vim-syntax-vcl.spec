@@ -1,17 +1,17 @@
 %define		syntax vcl
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
-Version:	1.1
-Release:	0.1
+Version:	1.3
+Release:	0.2
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	vcl.vim
 URL:		http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/vim-syntax-vcl/
-Requires:	vim-rt >= 4:7.2.239-3
+Requires:	vim-rt >= 4:7.2.170
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_vimdatadir	%{_datadir}/vim/vimfiles
+%define		_vimdatadir	%{_datadir}/vim
 
 %description
 Vim syntax for Varnish configuation Language (VCL).
