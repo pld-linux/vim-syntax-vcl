@@ -45,7 +45,11 @@ unlet b:current_syntax
 syn region vclCBlock matchgroup=vclComment start=/C{/ end=/}C/ contains=@vclC keepend
 
 " Synthetic
-syn region vclSynthetic start=/{"/hs=s+2 end=/"}/he=e-2
+syn region vclSynthetic start=/{"/hs=s+2 end=/"}/he=e-2 contains=@vclHTML keepend
+
+" Allow html in synthetic
+syn include @vclHTML syntax/html.vim
+unlet b:current_syntax
 
 hi link vclCodeBlock	Function
 hi link vclComment 		Comment
