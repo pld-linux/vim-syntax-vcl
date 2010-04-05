@@ -31,7 +31,7 @@ endif
 "syn match  vclFunctionName "\h[[:alnum:]_:]*" contained
 "syn match  vclFunctionName "\h\w*[^:]" contained
 "
-syn keyword vclOperator     set call return error esi synthetic include remove
+syn keyword vclOperator     set call return error esi synthetic include remove unset
 " return modes
 syn keyword vclModes        deliver pipe pass hash lookup discard fetch
 
@@ -44,7 +44,7 @@ syn match  vclSpecialCharacter display "L\='\\\o\{1,3}'"
 syn match  vclSpecialCharacter display "'\\x\x\{1,2}'"
 syn match  vclSpecialCharacter display "L'\\x\x\+'"
 
-syn keyword vclConditional  if else elseif
+syn keyword vclConditional  if else elsif elseif
 
 " Numbers
 syn match  vclNumbers  display transparent "\<\d\|\.\d" contains=vclNumber,vclNumberTime
