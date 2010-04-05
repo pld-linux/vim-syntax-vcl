@@ -1,6 +1,6 @@
 " Vim syntax file
 " Filename:     vcl.vim
-" Language:     Varnish configuation Language, http://www.varnish-cache.org/
+" Language:     Varnish configuation Language, http://varnish-cache.org/wiki/VCL
 " Maintainer:   Elan Ruusamäe <glen@delfi.ee>
 " Version Info: $Revision$
 " Last Change:  $Date$ UTC
@@ -13,7 +13,13 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn match vclComment	'#.*'
+" TODO
+" - sub ...
+" - backend/director/...
+" - acl ...
+" - error when invalid operator used in if (...)
+" - +=, = operators
+" - functions
 
 " Code Blocks
 "       sub NAME {
@@ -25,7 +31,9 @@ syn match vclComment	'#.*'
 "syn match  vclFunctionName "\h[[:alnum:]_:]*" contained
 "syn match  vclFunctionName "\h\w*[^:]" contained
 "
-syn keyword vclOperator       set call return synthetic deliver include
+syn keyword vclOperator     set call return error esi synthetic include
+" return modes
+syn keyword vclModes        deliver pipe pass hash lookup discard fetch
 
 " C strings
 syn region vclString start=+L\="+ skip=+\\\\\|\\"+ end=+"+ contains=vclSpecial
@@ -36,6 +44,28 @@ syn match  vclSpecialCharacter display "L\='\\\o\{1,3}'"
 syn match  vclSpecialCharacter display "'\\x\x\{1,2}'"
 syn match  vclSpecialCharacter display "L'\\x\x\+'"
 
+syn keyword vclConditional  if else elseif
+
+" Numbers
+syn match  vclNumbers  display transparent "\<\d\|\.\d" contains=vclNumber,vclNumberTime
+syn match  vclNumber   display contained "\d\+"
+" set obj.ttl = 0s, 0m;
+syn match  vclNumberTime   display contained "\d\+[dhsm]"
+
+" client
+syn match  vclOption   /client\.ip/
+" server
+syn match  vclOption   /server\.\(ip\|port\)/
+" req
+syn match  vclOption   /req\.\(hash\|request\|url\|proto\|backend\|backend\.healthy\|grace\|xid\)/
+" bereq.
+syn match  vclOption   /bereq\.\(request\|url\|proto\|connect_timeout\|first_byte_timeout\|between_bytes_timeout\)/
+" obj
+syn match  vclOption   /obj\.\(proto\|status\|response\|cacheable\|ttl\|lastuse\|hits\|hash\|grace\|prefetch\)/
+" resp
+syn match  vclOption   /resp\.\(proto\|status\|response\)/
+" common: http.HEADERNAME
+syn match  vclOption   /\(req\|bereq\|resp\|obj\)\.http\.[A-Za-z][-_A-Za-z0-9]*/
 
 " Highlight the C block
 syn include @vclC syntax/c.vim
@@ -51,14 +81,24 @@ syn region vclSynthetic start=/{"/hs=s+2 end=/"}/he=e-2 contains=@vclHTML keepen
 syn include @vclHTML syntax/html.vim
 unlet b:current_syntax
 
-hi link vclCodeBlock	Function
-hi link vclComment 		Comment
-hi link vclStatement	Statement
-hi link vclFunctionName	Identifier
-hi link vclCodeBlockName	Statement
+syn match  vclComment   '#.*'
+syn match  vclComment   "//.*"
+syn region vclComment    start="/\*"  end="\*/"
+
+syn sync ccomment vclComment
+
+hi link vclCodeBlock        Function
+hi link vclComment          Comment
+hi link vclStatement        Statement
+hi link vclFunctionName     Identifier
+hi link vclCodeBlockName    Statement
 hi link vclSpecial          SpecialChar
 hi link vclString           String
-hi link vclSynthetic	vclString
-hi link vclSpecialCharacter   vclSpecialSpecial
-hi link vclOperator           Operator
-
+hi link vclConditional      Conditional
+hi link vclSynthetic        vclString
+hi link vclSpecialCharacter vclSpecialSpecial
+hi link vclOperator         Operator
+hi link vclModes            Operator
+hi link vclOption           Identifier
+hi link vclNumber           Number
+hi link vclNumberTime       Number
