@@ -1,8 +1,8 @@
 %define		syntax vcl
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
-Version:	1.3
-Release:	0.2
+Version:	1.7
+Release:	1
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	vcl.vim
