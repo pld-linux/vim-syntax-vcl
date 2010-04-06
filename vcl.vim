@@ -33,7 +33,7 @@ endif
 "
 syn keyword vclOperator     set call return error esi synthetic include remove unset
 " return modes
-syn keyword vclModes        deliver pipe pass hash lookup discard fetch
+syn keyword vclModes        deliver pipe pass hash lookup discard fetch restart
 
 " C strings
 syn region vclString start=+L\="+ skip=+\\\\\|\\"+ end=+"+ contains=vclSpecial
@@ -57,7 +57,7 @@ syn match  vclOption   /client\.ip/
 " server
 syn match  vclOption   /server\.\(ip\|port\)/
 " req
-syn match  vclOption   /req\.\(hash\|request\|url\|proto\|backend\.healthy\|backend\|grace\|xid\)/
+syn match  vclOption   /req\.\(hash\|request\|url\|proto\|backend\.healthy\|backend\|grace\|xid\|restarts\)/
 " bereq.
 syn match  vclOption   /bereq\.\(request\|url\|proto\|connect_timeout\|first_byte_timeout\|between_bytes_timeout\)/
 " obj
