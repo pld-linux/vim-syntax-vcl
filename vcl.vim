@@ -2,6 +2,7 @@
 " Filename:     vcl.vim
 " Language:     Varnish configuation Language, http://www.varnish-cache.org/wiki/VCL
 " Maintainer:   Elan Ruusamäe <glen@delfi.ee>
+" URL:          http://cvs.pld-linux.org/packages/vim-syntax-vcl/vcl.vim
 " Version Info: $Revision$
 " Last Change:  $Date$ UTC
 
