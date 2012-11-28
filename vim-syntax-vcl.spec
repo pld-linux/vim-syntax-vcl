@@ -6,6 +6,7 @@ Release:	1
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	vcl.vim
+Source1:	ftdetect.vim
 URL:		http://git.pld-linux.org/packages/vim-syntax-vcl/
 Requires:	vim-rt >= 4:7.2.170
 BuildArch:	noarch
@@ -26,11 +27,8 @@ fi
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_vimdatadir}/{syntax,ftdetect}
-cp -p %{SOURCE0} $RPM_BUILD_ROOT%{_vimdatadir}/syntax
-
-cat > $RPM_BUILD_ROOT%{_vimdatadir}/ftdetect/%{syntax}.vim <<-EOF
-au BufNewFile,BufRead *.vcl	setf %{syntax}
-EOF
+cp -p %{SOURCE0} $RPM_BUILD_ROOT%{_vimdatadir}/syntax/%{syntax}.vim
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_vimdatadir}/ftdetect/%{syntax}.vim
 
 %clean
 rm -rf $RPM_BUILD_ROOT
