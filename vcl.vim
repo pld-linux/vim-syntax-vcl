@@ -3,7 +3,7 @@
 " Language:     Varnish configuation Language, http://www.varnish-cache.org/wiki/VCL
 " Maintainer:   Elan Ruusamäe <glen@delfi.ee>
 " URL:          http://git.pld-linux.org/packages/vim-syntax-vcl/
-" Revision:     1.7
+" Revision:     1.8
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -31,7 +31,7 @@ endif
 "syn match  vclFunctionName "\h[[:alnum:]_:]*" contained
 "syn match  vclFunctionName "\h\w*[^:]" contained
 "
-syn keyword vclOperator     set call return error esi synthetic include remove unset
+syn keyword vclOperator     set call return error esi synthetic include remove unset hash_data
 " return modes
 syn keyword vclModes        deliver pipe pass hash lookup discard fetch restart
 
