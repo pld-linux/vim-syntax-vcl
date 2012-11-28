@@ -3,6 +3,7 @@
 " Language:     Varnish configuation Language, http://www.varnish-cache.org/wiki/VCL
 " Maintainer:   Elan Ruusamäe <glen@delfi.ee>
 " URL:          http://git.pld-linux.org/packages/vim-syntax-vcl/
+" URL:          https://github.com/pld-linux/vim-syntax-vcl/
 " Revision:     1.8
 
 " For version 5.x: Clear all syntax items
