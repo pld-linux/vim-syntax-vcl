@@ -2,9 +2,8 @@
 " Filename:     vcl.vim
 " Language:     Varnish configuation Language, http://www.varnish-cache.org/wiki/VCL
 " Maintainer:   Elan Ruusamäe <glen@delfi.ee>
-" URL:          http://cvs.pld-linux.org/packages/vim-syntax-vcl/vcl.vim
-" Version Info: $Revision$
-" Last Change:  $Date$ UTC
+" URL:          http://git.pld-linux.org/packages/vim-syntax-vcl/
+" Revision:     1.7
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded

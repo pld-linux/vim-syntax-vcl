@@ -1,12 +1,12 @@
 %define		syntax vcl
 Summary:	Vim syntax: Varnish configuation Language
 Name:		vim-syntax-%{syntax}
-Version:	1.7
+Version:	1.8
 Release:	1
 License:	GPL v2
 Group:		Applications/Editors/Vim
 Source0:	vcl.vim
-URL:		http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/vim-syntax-vcl/
+URL:		http://git.pld-linux.org/packages/vim-syntax-vcl/
 Requires:	vim-rt >= 4:7.2.170
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -17,7 +17,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Vim syntax for Varnish configuation Language (VCL).
 
 %prep
-rev=$(awk '/^".*Revision:/{print $5}' %{SOURCE0})
+rev=$(awk '/^".*Revision:/{print $3}' %{SOURCE0})
 if [ "$rev" != "%{version}" ]; then
 	: Update version $rev, and retry
 	exit 1
@@ -26,7 +26,7 @@ fi
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_vimdatadir}/{syntax,ftdetect}
-cp -a %{SOURCE0} $RPM_BUILD_ROOT%{_vimdatadir}/syntax
+cp -p %{SOURCE0} $RPM_BUILD_ROOT%{_vimdatadir}/syntax
 
 cat > $RPM_BUILD_ROOT%{_vimdatadir}/ftdetect/%{syntax}.vim <<-EOF
 au BufNewFile,BufRead *.vcl	setf %{syntax}
